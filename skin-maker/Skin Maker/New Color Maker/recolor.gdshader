@@ -1,19 +1,19 @@
 shader_type canvas_item;
-
 render_mode blend_mix;
 
 uniform int borderthickness = 1;
-uniform vec4 bordercolor = vec4(1,0,0,1);
+uniform vec4 bordercolor = vec4(1.0, 0.0, 0.0, 1.0);
 
-uniform vec4 Dye1 = vec4(0,0,0,255);
-uniform vec4 Dye2 = vec4(0,0,0,255);
-uniform vec4 Dye3 = vec4(0,0,0,255);
-uniform vec4 Dye4 = vec4(0,0,0,255);
-uniform vec4 Dye5 = vec4(0,0,0,255);
-uniform vec4 Dye6 = vec4(0,0,0,255);
-uniform vec4 Dye7 = vec4(0,0,0,255);
-uniform vec4 Dye8 = vec4(0,0,0,255);
-uniform vec4 Dye9 = vec4(0,0,0,255);
+// Dye colors are expected in 0..255 like your originals
+uniform vec4 Dye1  = vec4(0,0,0,255);
+uniform vec4 Dye2  = vec4(0,0,0,255);
+uniform vec4 Dye3  = vec4(0,0,0,255);
+uniform vec4 Dye4  = vec4(0,0,0,255);
+uniform vec4 Dye5  = vec4(0,0,0,255);
+uniform vec4 Dye6  = vec4(0,0,0,255);
+uniform vec4 Dye7  = vec4(0,0,0,255);
+uniform vec4 Dye8  = vec4(0,0,0,255);
+uniform vec4 Dye9  = vec4(0,0,0,255);
 uniform vec4 Dye10 = vec4(0,0,0,255);
 uniform vec4 Dye11 = vec4(0,0,0,255);
 uniform vec4 Dye12 = vec4(0,0,0,255);
@@ -34,98 +34,97 @@ uniform vec4 Dye26 = vec4(0,0,0,255);
 uniform vec4 Dye27 = vec4(0,0,0,255);
 uniform vec4 Dye28 = vec4(0,0,0,255);
 
-//Cape color
-const vec4 Base1 = vec4(062,046,074,255);
-const vec4 Base2 = vec4(111,049,152,255);
-const vec4 Base3 = vec4(098,067,120,255);
-const vec4 Base4 = vec4(145,102,176,255);
-const vec4 Base5 = vec4(181,165,213,255);
-const vec4 Base6 = vec4(198,186,222,255);
-//gloves
-const vec4 Base7 = vec4(012,015,046,255);
-const vec4 Base8 = vec4(033,038,105,255);
-const vec4 Base9 = vec4(083,088,153,255);
-const vec4 Base10= vec4(134,138,181,255);
-//boots
-const vec4 Base11= vec4(051,022,010,255);
-const vec4 Base12= vec4(089,038,017,255);
-//eyes
-const vec4 Base13= vec4(099,136,016,255);
-const vec4 Base14= vec4(149,204,025,255);
-const vec4 Base15= vec4(227,227,227,255);
-//magic
-const vec4 Base16= vec4(000,038,255,255);
-const vec4 Base17= vec4(000,255,255,255);
-//belt
-const vec4 Base18= vec4(255,000,000,255);
-const vec4 Base19= vec4(255,255,255,255);
-//tunic
-const vec4 Base20= vec4(069,099,135,255);
-const vec4 Base21= vec4(092,132,184,255);
-const vec4 Base22= vec4(149,174,204,255);
-//border
-const vec4 Base23= vec4(000,000,000,255);
-//staff
-const vec4 Base24= vec4(121,069,046,255);
-const vec4 Base25= vec4(166,110,086,255);
-const vec4 Base26= vec4(170,132,116,255);
-const vec4 Base27= vec4(196,170,141,255);
-const vec4 Base28= vec4(228,213,167,255);
-//end
+// Base palette (0..255)
+const vec3 Base1  = vec3(62,46,74);
+const vec3 Base2  = vec3(111,49,152);
+const vec3 Base3  = vec3(98,67,120);
+const vec3 Base4  = vec3(145,102,176);
+const vec3 Base5  = vec3(181,165,213);
+const vec3 Base6  = vec3(198,186,222);
+const vec3 Base7  = vec3(12,15,46);
+const vec3 Base8  = vec3(33,38,105);
+const vec3 Base9  = vec3(83,88,153);
+const vec3 Base10 = vec3(134,138,181);
+const vec3 Base11 = vec3(51,22,10);
+const vec3 Base12 = vec3(89,38,17);
+const vec3 Base13 = vec3(99,136,16);
+const vec3 Base14 = vec3(149,204,25);
+const vec3 Base15 = vec3(227,227,227);
+const vec3 Base16 = vec3(0,38,255);
+const vec3 Base17 = vec3(0,255,255);
+const vec3 Base18 = vec3(255,0,0);
+const vec3 Base19 = vec3(255,255,255);
+const vec3 Base20 = vec3(69,99,135);
+const vec3 Base21 = vec3(92,132,184);
+const vec3 Base22 = vec3(149,174,204);
+const vec3 Base23 = vec3(0,0,0);
+const vec3 Base24 = vec3(121,69,46);
+const vec3 Base25 = vec3(166,110,86);
+const vec3 Base26 = vec3(170,132,116);
+const vec3 Base27 = vec3(196,170,141);
+const vec3 Base28 = vec3(228,213,167);
 
-const vec4 floatConv = vec4(255,255,255,255);
+const float INV_255 = 1.0 / 255.0;
 
-uniform vec4 colorShift;
-
-void vertex() {
-	// Called for every vertex the material is visible on.
+bool same255(vec3 a, vec3 b) {
+	// a and b are in 0..255 space
+	// using a tiny tolerance avoids precision differences on mobile
+	return all(lessThan(abs(a - b), vec3(0.5)));
 }
 
 void fragment() {
-	vec4 Texture = texture(TEXTURE,UV) * floatConv;
-	vec3 tex_rgb = Texture.rgb;
+	vec4 tex = texture(TEXTURE, UV);
+	vec3 tex255 = floor(tex.rgb * 255.0 + 0.5);
 
+	vec4 out_col = tex;
 
+	if (tex.a > 0.0) {
+		// Unrolled palette swap (mobile-safe)
+		if      (same255(tex255, Base1))  out_col = vec4(Dye1.rgb * INV_255, tex.a);
+		else if (same255(tex255, Base2))  out_col = vec4(Dye2.rgb * INV_255, tex.a);
+		else if (same255(tex255, Base3))  out_col = vec4(Dye3.rgb * INV_255, tex.a);
+		else if (same255(tex255, Base4))  out_col = vec4(Dye4.rgb * INV_255, tex.a);
+		else if (same255(tex255, Base5))  out_col = vec4(Dye5.rgb * INV_255, tex.a);
+		else if (same255(tex255, Base6))  out_col = vec4(Dye6.rgb * INV_255, tex.a);
+		else if (same255(tex255, Base7))  out_col = vec4(Dye7.rgb * INV_255, tex.a);
+		else if (same255(tex255, Base8))  out_col = vec4(Dye8.rgb * INV_255, tex.a);
+		else if (same255(tex255, Base9))  out_col = vec4(Dye9.rgb * INV_255, tex.a);
+		else if (same255(tex255, Base10)) out_col = vec4(Dye10.rgb * INV_255, tex.a);
+		else if (same255(tex255, Base11)) out_col = vec4(Dye11.rgb * INV_255, tex.a);
+		else if (same255(tex255, Base12)) out_col = vec4(Dye12.rgb * INV_255, tex.a);
+		else if (same255(tex255, Base13)) out_col = vec4(Dye13.rgb * INV_255, tex.a);
+		else if (same255(tex255, Base14)) out_col = vec4(Dye14.rgb * INV_255, tex.a);
+		else if (same255(tex255, Base15)) out_col = vec4(Dye15.rgb * INV_255, tex.a);
+		else if (same255(tex255, Base16)) out_col = vec4(Dye16.rgb * INV_255, tex.a);
+		else if (same255(tex255, Base17)) out_col = vec4(Dye17.rgb * INV_255, tex.a);
+		else if (same255(tex255, Base18)) out_col = vec4(Dye18.rgb * INV_255, tex.a);
+		else if (same255(tex255, Base19)) out_col = vec4(Dye19.rgb * INV_255, tex.a);
+		else if (same255(tex255, Base20)) out_col = vec4(Dye20.rgb * INV_255, tex.a);
+		else if (same255(tex255, Base21)) out_col = vec4(Dye21.rgb * INV_255, tex.a);
+		else if (same255(tex255, Base22)) out_col = vec4(Dye22.rgb * INV_255, tex.a);
+		else if (same255(tex255, Base23)) out_col = vec4(Dye23.rgb * INV_255, tex.a);
+		else if (same255(tex255, Base24)) out_col = vec4(Dye24.rgb * INV_255, tex.a);
+		else if (same255(tex255, Base25)) out_col = vec4(Dye25.rgb * INV_255, tex.a);
+		else if (same255(tex255, Base26)) out_col = vec4(Dye26.rgb * INV_255, tex.a);
+		else if (same255(tex255, Base27)) out_col = vec4(Dye27.rgb * INV_255, tex.a);
+		else if (same255(tex255, Base28)) out_col = vec4(Dye28.rgb * INV_255, tex.a);
+	}
 
+	// Outline (keep constant bounds for WebGL1 safety)
+	const int MAX_THICKNESS = 1;
 
-
-
-	vec4 BaseColorArray[28] = vec4[28](Base1,Base2,Base3,Base4,Base5,Base6,Base7,
-	Base8,Base9,Base10,Base11,Base12,Base13,Base14,Base15,Base16,Base17,Base18,
-	Base19,Base20,Base21,Base22,Base23,Base24,Base25,Base26,Base27,Base28);
-
-	vec4 DyeColorArray[28] = vec4[28](Dye1, Dye2, Dye3, Dye4, Dye5, Dye6, Dye7, Dye8, Dye9,
-Dye10, Dye11, Dye12, Dye13, Dye14, Dye15, Dye16, Dye17, Dye18, Dye19, Dye20, Dye21, Dye22,
-Dye23, Dye24, Dye25, Dye26, Dye27, Dye28);
-
-	vec4 used_color = Texture/floatConv;
-	if (Texture.a > 0.){
-		for(int i = 0; i < 28; i++){
-			if(tex_rgb == BaseColorArray[i].rgb){
-				used_color = DyeColorArray[i]/floatConv;
-				break;
+	if (tex.a == 0.0) {
+		for (int x = -MAX_THICKNESS; x <= MAX_THICKNESS; x++) {
+			for (int y = -MAX_THICKNESS; y <= MAX_THICKNESS; y++) {
+				if (abs(x) <= borderthickness && abs(y) <= borderthickness) {
+					vec4 n = texture(TEXTURE, UV + vec2(float(x), float(y)) * TEXTURE_PIXEL_SIZE);
+					if (n.a != 0.0) {
+						out_col = bordercolor;
+					}
+				}
 			}
 		}
 	}
-	COLOR.rgb = used_color.rgb;
-	//COLOR.a = Texture.a;
 
-	//OUTLINE TEST
-for(int x = -borderthickness; x <= borderthickness; x++)
-	for(int y = -borderthickness; y <= borderthickness; y++){
-		if(Texture.a == 0.f){
-			vec4 bordertex = texture(TEXTURE,UV + vec2(float(x),float(y))*TEXTURE_PIXEL_SIZE);
-			if(bordertex.a != 0.f){
-				COLOR = bordercolor;
-			}
-		}
-
-	}
+	COLOR = out_col;
 }
-	// Called for every pixel the material is visible on.
-
-
-//void light() {
-//	// Called for every pixel for every light affecting the CanvasItem.
-//	// Uncomment to replace the default light processing function with this one.
-//}

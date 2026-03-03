@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://1vvc8b3826qp"]
+[gd_scene load_steps=22 format=3 uid="uid://1vvc8b3826qp"]
 
 [ext_resource type="Script" uid="uid://cyfdeu273g21j" path="res://Skin Maker/New Color Maker/color_maker.gd" id="1_2sfxq"]
 [ext_resource type="Texture2D" uid="uid://bjheq21mv76hp" path="res://Skin Maker/New Color Maker/Background.png" id="1_rvs4m"]
@@ -7,12 +7,14 @@
 [ext_resource type="Script" uid="uid://c0q5senh0c58c" path="res://Skin Maker/color_picker.gd" id="3_f5yti"]
 [ext_resource type="Shader" uid="uid://cql321bth05u1" path="res://Skin Maker/New Color Maker/recolor.gdshader" id="3_tieg5"]
 [ext_resource type="SpriteFrames" uid="uid://cy7q07xxbjbtx" path="res://Skin Maker/New Color Maker/Liam sprites/new_sprite_frames.tres" id="5_xy500"]
+[ext_resource type="Script" uid="uid://bifs47th0xnpa" path="res://Skin Maker/New Color Maker/picker.gd" id="10_4ppq4"]
 [ext_resource type="Texture2D" uid="uid://d1n6tsj0isoxi" path="res://Skin Maker/New Color Maker/flachePlatform.png" id="13_ct0eq"]
 [ext_resource type="Texture2D" uid="uid://bvtb7tq4jjq1b" path="res://Skin Maker/New Color Maker/sky day.png" id="13_g1nnr"]
 [ext_resource type="Script" uid="uid://cf0iov5ql4koe" path="res://Skin Maker/New Color Maker/import.gd" id="15_4v2k1"]
 [ext_resource type="Texture2D" uid="uid://diyarcomekkg0" path="res://Skin Maker/Dummy_Idle.png" id="15_wicag"]
 [ext_resource type="Script" uid="uid://d1g4fi12y7ckw" path="res://Skin Maker/New Color Maker/export.gd" id="16_gmrce"]
 [ext_resource type="PackedScene" uid="uid://b3dc60kejlrhe" path="res://Skin Maker/New Color Maker/Skins/New Color ressources/converter.tscn" id="16_y421m"]
+[ext_resource type="Texture2D" uid="uid://dm7n3iqkw3l8v" path="res://Skin Maker/File.png" id="19_i8n66"]
 [ext_resource type="Script" uid="uid://d2gdt11bb25s2" path="res://Skin Maker/New Color Maker/builder.gd" id="25_yus0r"]
 [ext_resource type="Script" uid="uid://6fdfnv55bnlr" path="res://Skin Maker/New Color Maker/reader.gd" id="26_fu172"]
 [ext_resource type="Script" uid="uid://dyp283ln0myc4" path="res://Skin Maker/New Color Maker/tester.gd" id="28_4pfyr"]
@@ -52,7 +54,6 @@ shader_parameter/Dye25 = Vector4(999, 0, 0, 255)
 shader_parameter/Dye26 = Vector4(0, 255, 0, 255)
 shader_parameter/Dye27 = Vector4(999, 0, 0, 255)
 shader_parameter/Dye28 = Vector4(999, 0, 0, 255)
-shader_parameter/colorShift = Vector4(0, 0, 0, 0)
 
 [node name="ColorMaker" type="Node2D"]
 script = ExtResource("1_2sfxq")
@@ -76,8 +77,9 @@ material = SubResource("ShaderMaterial_gsqxq")
 position = Vector2(314, 178)
 scale = Vector2(2, 2)
 sprite_frames = ExtResource("5_xy500")
-animation = &"BaseMelee"
+animation = &"Idle"
 autoplay = "Idle"
+frame_progress = 0.8739868
 
 [node name="ToColorsButton" type="Button" parent="Camera2D"]
 visible = false
@@ -174,6 +176,7 @@ offset_top = 30.0
 offset_right = 441.44
 offset_bottom = 36.88
 theme = ExtResource("3_2f6o5")
+script = ExtResource("10_4ppq4")
 
 [node name="1" type="ColorPickerButton" parent="Editor/Color Pickers/ColorPickers"]
 anchors_preset = -1
@@ -184,6 +187,7 @@ offset_top = 30.0
 offset_right = 168.0
 offset_bottom = 38.0
 theme = ExtResource("3_2f6o5")
+script = ExtResource("10_4ppq4")
 
 [node name="2" type="ColorPickerButton" parent="Editor/Color Pickers/ColorPickers"]
 anchors_preset = -1
@@ -193,6 +197,7 @@ offset_top = 30.0
 offset_right = 8.0
 offset_bottom = 38.0
 theme = ExtResource("3_2f6o5")
+script = ExtResource("10_4ppq4")
 
 [node name="3" type="ColorPickerButton" parent="Editor/Color Pickers/ColorPickers"]
 anchors_preset = -1
@@ -203,6 +208,7 @@ offset_top = 30.0
 offset_right = 27.111137
 offset_bottom = 9.999992
 theme = ExtResource("3_2f6o5")
+script = ExtResource("10_4ppq4")
 
 [node name="4" type="ColorPickerButton" parent="Editor/Color Pickers/ColorPickers"]
 anchors_preset = -1
@@ -213,6 +219,7 @@ offset_top = 30.0
 offset_right = 67.11117
 offset_bottom = 9.999992
 theme = ExtResource("3_2f6o5")
+script = ExtResource("10_4ppq4")
 
 [node name="5" type="ColorPickerButton" parent="Editor/Color Pickers/ColorPickers"]
 anchors_preset = -1
@@ -223,6 +230,7 @@ offset_top = 30.0
 offset_right = 107.11117
 offset_bottom = 9.999992
 theme = ExtResource("3_2f6o5")
+script = ExtResource("10_4ppq4")
 
 [node name="6" type="ColorPickerButton" parent="Editor/Color Pickers/ColorPickers"]
 anchors_preset = -1
@@ -233,6 +241,7 @@ offset_top = 178.0
 offset_right = 503.11118
 offset_bottom = 158.0
 theme = ExtResource("3_2f6o5")
+script = ExtResource("10_4ppq4")
 
 [node name="7" type="ColorPickerButton" parent="Editor/Color Pickers/ColorPickers"]
 anchors_preset = -1
@@ -243,6 +252,7 @@ offset_top = 30.0
 offset_right = 463.11118
 offset_bottom = 9.999992
 theme = ExtResource("3_2f6o5")
+script = ExtResource("10_4ppq4")
 
 [node name="8" type="ColorPickerButton" parent="Editor/Color Pickers/ColorPickers"]
 visible = false
@@ -254,6 +264,7 @@ offset_top = 40.0
 offset_right = 67.11117
 offset_bottom = 19.999992
 theme = ExtResource("3_2f6o5")
+script = ExtResource("10_4ppq4")
 metadata/_edit_use_anchors_ = true
 
 [node name="9" type="ColorPickerButton" parent="Editor/Color Pickers/ColorPickers"]
@@ -265,6 +276,7 @@ offset_top = 178.0
 offset_right = 543.11115
 offset_bottom = 158.0
 theme = ExtResource("3_2f6o5")
+script = ExtResource("10_4ppq4")
 
 [node name="10" type="ColorPickerButton" parent="Editor/Color Pickers/ColorPickers"]
 anchors_preset = -1
@@ -275,6 +287,7 @@ offset_top = 104.0
 offset_right = 147.11118
 offset_bottom = 83.99999
 theme = ExtResource("3_2f6o5")
+script = ExtResource("10_4ppq4")
 
 [node name="11" type="ColorPickerButton" parent="Editor/Color Pickers/ColorPickers"]
 anchors_preset = -1
@@ -285,6 +298,7 @@ offset_top = 178.0
 offset_right = 583.11115
 offset_bottom = 158.0
 theme = ExtResource("3_2f6o5")
+script = ExtResource("10_4ppq4")
 
 [node name="12" type="ColorPickerButton" parent="Editor/Color Pickers/ColorPickers"]
 anchors_preset = -1
@@ -295,6 +309,7 @@ offset_top = 104.0
 offset_right = 503.11118
 offset_bottom = 83.99999
 theme = ExtResource("3_2f6o5")
+script = ExtResource("10_4ppq4")
 
 [node name="13" type="ColorPickerButton" parent="Editor/Color Pickers/ColorPickers"]
 anchors_preset = -1
@@ -305,6 +320,7 @@ offset_top = 104.0
 offset_right = 543.11115
 offset_bottom = 83.99999
 theme = ExtResource("3_2f6o5")
+script = ExtResource("10_4ppq4")
 
 [node name="14" type="ColorPickerButton" parent="Editor/Color Pickers/ColorPickers"]
 anchors_preset = -1
@@ -315,6 +331,7 @@ offset_top = 104.0
 offset_right = 583.11115
 offset_bottom = 83.99999
 theme = ExtResource("3_2f6o5")
+script = ExtResource("10_4ppq4")
 
 [node name="15" type="ColorPickerButton" parent="Editor/Color Pickers/ColorPickers"]
 visible = false
@@ -326,6 +343,7 @@ offset_top = 80.0
 offset_right = 107.11117
 offset_bottom = 59.999992
 theme = ExtResource("3_2f6o5")
+script = ExtResource("10_4ppq4")
 metadata/_edit_use_anchors_ = true
 
 [node name="16" type="ColorPickerButton" parent="Editor/Color Pickers/ColorPickers"]
@@ -337,6 +355,7 @@ offset_top = 178.0
 offset_right = 67.11117
 offset_bottom = 158.0
 theme = ExtResource("3_2f6o5")
+script = ExtResource("10_4ppq4")
 
 [node name="17" type="ColorPickerButton" parent="Editor/Color Pickers/ColorPickers"]
 anchors_preset = -1
@@ -346,6 +365,7 @@ offset_top = 178.0
 offset_right = -12.888832
 offset_bottom = 158.0
 theme = ExtResource("3_2f6o5")
+script = ExtResource("10_4ppq4")
 
 [node name="18" type="ColorPickerButton" parent="Editor/Color Pickers/ColorPickers"]
 anchors_preset = -1
@@ -356,6 +376,7 @@ offset_top = 178.0
 offset_right = 27.111168
 offset_bottom = 158.0
 theme = ExtResource("3_2f6o5")
+script = ExtResource("10_4ppq4")
 
 [node name="19" type="ColorPickerButton" parent="Editor/Color Pickers/ColorPickers"]
 anchors_preset = -1
@@ -366,6 +387,7 @@ offset_top = 30.0
 offset_right = 503.11118
 offset_bottom = 9.999992
 theme = ExtResource("3_2f6o5")
+script = ExtResource("10_4ppq4")
 
 [node name="20" type="ColorPickerButton" parent="Editor/Color Pickers/ColorPickers"]
 anchors_preset = -1
@@ -376,6 +398,7 @@ offset_top = 30.0
 offset_right = 543.11115
 offset_bottom = 9.999992
 theme = ExtResource("3_2f6o5")
+script = ExtResource("10_4ppq4")
 
 [node name="21" type="ColorPickerButton" parent="Editor/Color Pickers/ColorPickers"]
 anchors_preset = -1
@@ -386,6 +409,7 @@ offset_top = 30.0
 offset_right = 583.11115
 offset_bottom = 9.999992
 theme = ExtResource("3_2f6o5")
+script = ExtResource("10_4ppq4")
 
 [node name="22" type="ColorPickerButton" parent="Editor/Color Pickers/ColorPickers"]
 anchors_preset = -1
@@ -396,6 +420,7 @@ offset_top = 104.0
 offset_right = 423.11118
 offset_bottom = 83.99999
 theme = ExtResource("3_2f6o5")
+script = ExtResource("10_4ppq4")
 
 [node name="23" type="ColorPickerButton" parent="Editor/Color Pickers/ColorPickers"]
 anchors_preset = -1
@@ -405,6 +430,7 @@ offset_top = 104.0
 offset_right = -12.888832
 offset_bottom = 83.99999
 theme = ExtResource("3_2f6o5")
+script = ExtResource("10_4ppq4")
 
 [node name="24" type="ColorPickerButton" parent="Editor/Color Pickers/ColorPickers"]
 anchors_preset = -1
@@ -415,6 +441,7 @@ offset_top = 104.0
 offset_right = 27.111168
 offset_bottom = 83.99999
 theme = ExtResource("3_2f6o5")
+script = ExtResource("10_4ppq4")
 
 [node name="25" type="ColorPickerButton" parent="Editor/Color Pickers/ColorPickers"]
 anchors_preset = -1
@@ -425,6 +452,7 @@ offset_top = 104.0
 offset_right = 67.11114
 offset_bottom = 83.99999
 theme = ExtResource("3_2f6o5")
+script = ExtResource("10_4ppq4")
 
 [node name="26" type="ColorPickerButton" parent="Editor/Color Pickers/ColorPickers"]
 visible = false
@@ -436,6 +464,7 @@ offset_top = 160.0
 offset_right = 107.11117
 offset_bottom = 140.0
 theme = ExtResource("3_2f6o5")
+script = ExtResource("10_4ppq4")
 metadata/_edit_use_anchors_ = true
 
 [node name="27" type="ColorPickerButton" parent="Editor/Color Pickers/ColorPickers"]
@@ -448,6 +477,7 @@ offset_top = 160.0
 offset_right = 147.11118
 offset_bottom = 140.0
 theme = ExtResource("3_2f6o5")
+script = ExtResource("10_4ppq4")
 metadata/_edit_use_anchors_ = true
 
 [node name="Label" type="Label" parent="Editor/Color Pickers"]
@@ -563,10 +593,10 @@ position = Vector2i(-640, 0)
 access = 2
 
 [node name="Import" type="Button" parent="Import"]
-offset_left = -430.0
-offset_top = 250.0
-offset_right = -349.0
-offset_bottom = 310.0
+offset_left = -408.0
+offset_top = 278.0
+offset_right = -327.0
+offset_bottom = 338.0
 text = "Import
 Skin"
 
@@ -575,6 +605,16 @@ offset_left = -629.0
 offset_top = 311.0
 offset_right = -2.0
 offset_bottom = 351.0
+
+[node name="PasteBox" type="TextEdit" parent="Import"]
+visible = false
+offset_left = -640.0
+offset_right = -459.0
+offset_bottom = 248.0
+focus_mode = 1
+placeholder_text = "Place file
+content of skin
+here"
 
 [node name="Export" type="Node" parent="."]
 script = ExtResource("16_gmrce")
@@ -585,10 +625,10 @@ position = Vector2i(-640, 0)
 access = 2
 
 [node name="Export" type="Button" parent="Export"]
-offset_left = -291.0
-offset_top = 250.0
-offset_right = -210.0
-offset_bottom = 310.0
+offset_left = -313.0
+offset_top = 278.0
+offset_right = -232.0
+offset_bottom = 338.0
 text = "Export
 Skin"
 
@@ -600,44 +640,106 @@ texture = ExtResource("15_wicag")
 
 [node name="Node" parent="." instance=ExtResource("16_y421m")]
 
+[node name="File" type="Sprite2D" parent="."]
+position = Vector2(-320, 180)
+scale = Vector2(2, 2)
+texture = ExtResource("19_i8n66")
+
 [connection signal="pressed" from="Camera2D/ToColorsButton" to="Camera2D" method="_on_to_colors_button_pressed"]
 [connection signal="pressed" from="Camera2D/ToColorsButton2" to="Camera2D" method="_on_to_colors_button_pressed"]
 [connection signal="pressed" from="Camera2D/ToTesterButon" to="Camera2D" method="_on_to_tester_buton_pressed"]
 [connection signal="pressed" from="Camera2D/ToExportButon" to="Camera2D" method="_on_to_export_buton_pressed"]
 [connection signal="item_activated" from="Editor/Reader/Reader/ColorList" to="Editor/Reader/Reader" method="loadColor"]
-[connection signal="item_activated" from="Editor/Reader/Reader/ColorList" to="Editor/Reader/Reader" method="load_color"]
+[connection signal="item_clicked" from="Editor/Reader/Reader/ColorList" to="Editor/Reader/Reader" method="load_color"]
 [connection signal="button_down" from="Editor/Builder/Builder/Button" to="Editor/Builder/Builder" method="createColor"]
 [connection signal="color_changed" from="Editor/Color Pickers/ColorPickers/0" to="Editor/Color Pickers/ColorPickers" method="_on__color_changed0"]
+[connection signal="popup_closed" from="Editor/Color Pickers/ColorPickers/0" to="Editor/Color Pickers/ColorPickers/0" method="_on_popup_closed"]
+[connection signal="pressed" from="Editor/Color Pickers/ColorPickers/0" to="Editor/Color Pickers/ColorPickers/0" method="_on_pressed"]
 [connection signal="color_changed" from="Editor/Color Pickers/ColorPickers/1" to="Editor/Color Pickers/ColorPickers" method="_on__color_changed1"]
+[connection signal="popup_closed" from="Editor/Color Pickers/ColorPickers/1" to="Editor/Color Pickers/ColorPickers/1" method="_on_popup_closed"]
+[connection signal="pressed" from="Editor/Color Pickers/ColorPickers/1" to="Editor/Color Pickers/ColorPickers/1" method="_on_pressed"]
 [connection signal="color_changed" from="Editor/Color Pickers/ColorPickers/2" to="Editor/Color Pickers/ColorPickers" method="_on__color_changed2"]
+[connection signal="popup_closed" from="Editor/Color Pickers/ColorPickers/2" to="Editor/Color Pickers/ColorPickers/2" method="_on_popup_closed"]
+[connection signal="pressed" from="Editor/Color Pickers/ColorPickers/2" to="Editor/Color Pickers/ColorPickers/2" method="_on_pressed"]
 [connection signal="color_changed" from="Editor/Color Pickers/ColorPickers/3" to="Editor/Color Pickers/ColorPickers" method="_on__color_changed3"]
+[connection signal="popup_closed" from="Editor/Color Pickers/ColorPickers/3" to="Editor/Color Pickers/ColorPickers/3" method="_on_popup_closed"]
+[connection signal="pressed" from="Editor/Color Pickers/ColorPickers/3" to="Editor/Color Pickers/ColorPickers/3" method="_on_pressed"]
 [connection signal="color_changed" from="Editor/Color Pickers/ColorPickers/4" to="Editor/Color Pickers/ColorPickers" method="_on__color_changed4"]
+[connection signal="popup_closed" from="Editor/Color Pickers/ColorPickers/4" to="Editor/Color Pickers/ColorPickers/4" method="_on_popup_closed"]
+[connection signal="pressed" from="Editor/Color Pickers/ColorPickers/4" to="Editor/Color Pickers/ColorPickers/4" method="_on_pressed"]
 [connection signal="color_changed" from="Editor/Color Pickers/ColorPickers/5" to="Editor/Color Pickers/ColorPickers" method="_on__color_changed5"]
+[connection signal="popup_closed" from="Editor/Color Pickers/ColorPickers/5" to="Editor/Color Pickers/ColorPickers/5" method="_on_popup_closed"]
+[connection signal="pressed" from="Editor/Color Pickers/ColorPickers/5" to="Editor/Color Pickers/ColorPickers/5" method="_on_pressed"]
 [connection signal="color_changed" from="Editor/Color Pickers/ColorPickers/6" to="Editor/Color Pickers/ColorPickers" method="_on__color_changed6"]
+[connection signal="popup_closed" from="Editor/Color Pickers/ColorPickers/6" to="Editor/Color Pickers/ColorPickers/6" method="_on_popup_closed"]
+[connection signal="pressed" from="Editor/Color Pickers/ColorPickers/6" to="Editor/Color Pickers/ColorPickers/6" method="_on_pressed"]
 [connection signal="color_changed" from="Editor/Color Pickers/ColorPickers/7" to="Editor/Color Pickers/ColorPickers" method="_on__color_changed7"]
+[connection signal="popup_closed" from="Editor/Color Pickers/ColorPickers/7" to="Editor/Color Pickers/ColorPickers/7" method="_on_popup_closed"]
+[connection signal="pressed" from="Editor/Color Pickers/ColorPickers/7" to="Editor/Color Pickers/ColorPickers/7" method="_on_pressed"]
 [connection signal="color_changed" from="Editor/Color Pickers/ColorPickers/8" to="Editor/Color Pickers/ColorPickers" method="_on__color_changed8"]
+[connection signal="popup_closed" from="Editor/Color Pickers/ColorPickers/8" to="Editor/Color Pickers/ColorPickers/8" method="_on_popup_closed"]
+[connection signal="pressed" from="Editor/Color Pickers/ColorPickers/8" to="Editor/Color Pickers/ColorPickers/8" method="_on_pressed"]
 [connection signal="color_changed" from="Editor/Color Pickers/ColorPickers/9" to="Editor/Color Pickers/ColorPickers" method="_on__color_changed9"]
+[connection signal="popup_closed" from="Editor/Color Pickers/ColorPickers/9" to="Editor/Color Pickers/ColorPickers/9" method="_on_popup_closed"]
+[connection signal="pressed" from="Editor/Color Pickers/ColorPickers/9" to="Editor/Color Pickers/ColorPickers/9" method="_on_pressed"]
 [connection signal="color_changed" from="Editor/Color Pickers/ColorPickers/10" to="Editor/Color Pickers/ColorPickers" method="_on__color_changed10"]
+[connection signal="popup_closed" from="Editor/Color Pickers/ColorPickers/10" to="Editor/Color Pickers/ColorPickers/10" method="_on_popup_closed"]
+[connection signal="pressed" from="Editor/Color Pickers/ColorPickers/10" to="Editor/Color Pickers/ColorPickers/10" method="_on_pressed"]
 [connection signal="color_changed" from="Editor/Color Pickers/ColorPickers/11" to="Editor/Color Pickers/ColorPickers" method="_on__color_changed11"]
+[connection signal="popup_closed" from="Editor/Color Pickers/ColorPickers/11" to="Editor/Color Pickers/ColorPickers/11" method="_on_popup_closed"]
+[connection signal="pressed" from="Editor/Color Pickers/ColorPickers/11" to="Editor/Color Pickers/ColorPickers/11" method="_on_pressed"]
 [connection signal="color_changed" from="Editor/Color Pickers/ColorPickers/12" to="Editor/Color Pickers/ColorPickers" method="_on__color_changed12"]
+[connection signal="popup_closed" from="Editor/Color Pickers/ColorPickers/12" to="Editor/Color Pickers/ColorPickers/12" method="_on_popup_closed"]
+[connection signal="pressed" from="Editor/Color Pickers/ColorPickers/12" to="Editor/Color Pickers/ColorPickers/12" method="_on_pressed"]
 [connection signal="color_changed" from="Editor/Color Pickers/ColorPickers/13" to="Editor/Color Pickers/ColorPickers" method="_on__color_changed13"]
+[connection signal="popup_closed" from="Editor/Color Pickers/ColorPickers/13" to="Editor/Color Pickers/ColorPickers/13" method="_on_popup_closed"]
+[connection signal="pressed" from="Editor/Color Pickers/ColorPickers/13" to="Editor/Color Pickers/ColorPickers/13" method="_on_pressed"]
 [connection signal="color_changed" from="Editor/Color Pickers/ColorPickers/14" to="Editor/Color Pickers/ColorPickers" method="_on__color_changed14"]
+[connection signal="popup_closed" from="Editor/Color Pickers/ColorPickers/14" to="Editor/Color Pickers/ColorPickers/14" method="_on_popup_closed"]
+[connection signal="pressed" from="Editor/Color Pickers/ColorPickers/14" to="Editor/Color Pickers/ColorPickers/14" method="_on_pressed"]
 [connection signal="color_changed" from="Editor/Color Pickers/ColorPickers/15" to="Editor/Color Pickers/ColorPickers" method="_on__color_changed15"]
+[connection signal="popup_closed" from="Editor/Color Pickers/ColorPickers/15" to="Editor/Color Pickers/ColorPickers/15" method="_on_popup_closed"]
+[connection signal="pressed" from="Editor/Color Pickers/ColorPickers/15" to="Editor/Color Pickers/ColorPickers/15" method="_on_pressed"]
 [connection signal="color_changed" from="Editor/Color Pickers/ColorPickers/16" to="Editor/Color Pickers/ColorPickers" method="_on__color_changed16"]
+[connection signal="popup_closed" from="Editor/Color Pickers/ColorPickers/16" to="Editor/Color Pickers/ColorPickers/16" method="_on_popup_closed"]
+[connection signal="pressed" from="Editor/Color Pickers/ColorPickers/16" to="Editor/Color Pickers/ColorPickers/16" method="_on_pressed"]
 [connection signal="color_changed" from="Editor/Color Pickers/ColorPickers/17" to="Editor/Color Pickers/ColorPickers" method="_on__color_changed17"]
+[connection signal="popup_closed" from="Editor/Color Pickers/ColorPickers/17" to="Editor/Color Pickers/ColorPickers/17" method="_on_popup_closed"]
+[connection signal="pressed" from="Editor/Color Pickers/ColorPickers/17" to="Editor/Color Pickers/ColorPickers/17" method="_on_pressed"]
 [connection signal="color_changed" from="Editor/Color Pickers/ColorPickers/18" to="Editor/Color Pickers/ColorPickers" method="_on__color_changed18"]
+[connection signal="popup_closed" from="Editor/Color Pickers/ColorPickers/18" to="Editor/Color Pickers/ColorPickers/18" method="_on_popup_closed"]
+[connection signal="pressed" from="Editor/Color Pickers/ColorPickers/18" to="Editor/Color Pickers/ColorPickers/18" method="_on_pressed"]
 [connection signal="color_changed" from="Editor/Color Pickers/ColorPickers/19" to="Editor/Color Pickers/ColorPickers" method="_on__color_changed19"]
+[connection signal="popup_closed" from="Editor/Color Pickers/ColorPickers/19" to="Editor/Color Pickers/ColorPickers/19" method="_on_popup_closed"]
+[connection signal="pressed" from="Editor/Color Pickers/ColorPickers/19" to="Editor/Color Pickers/ColorPickers/19" method="_on_pressed"]
 [connection signal="color_changed" from="Editor/Color Pickers/ColorPickers/20" to="Editor/Color Pickers/ColorPickers" method="_on__color_changed20"]
+[connection signal="popup_closed" from="Editor/Color Pickers/ColorPickers/20" to="Editor/Color Pickers/ColorPickers/20" method="_on_popup_closed"]
+[connection signal="pressed" from="Editor/Color Pickers/ColorPickers/20" to="Editor/Color Pickers/ColorPickers/20" method="_on_pressed"]
 [connection signal="color_changed" from="Editor/Color Pickers/ColorPickers/21" to="Editor/Color Pickers/ColorPickers" method="_on__color_changed21"]
+[connection signal="popup_closed" from="Editor/Color Pickers/ColorPickers/21" to="Editor/Color Pickers/ColorPickers/21" method="_on_popup_closed"]
+[connection signal="pressed" from="Editor/Color Pickers/ColorPickers/21" to="Editor/Color Pickers/ColorPickers/21" method="_on_pressed"]
 [connection signal="color_changed" from="Editor/Color Pickers/ColorPickers/22" to="Editor/Color Pickers/ColorPickers" method="_on__color_changed22"]
+[connection signal="popup_closed" from="Editor/Color Pickers/ColorPickers/22" to="Editor/Color Pickers/ColorPickers/22" method="_on_popup_closed"]
+[connection signal="pressed" from="Editor/Color Pickers/ColorPickers/22" to="Editor/Color Pickers/ColorPickers/22" method="_on_pressed"]
 [connection signal="color_changed" from="Editor/Color Pickers/ColorPickers/23" to="Editor/Color Pickers/ColorPickers" method="_on__color_changed23"]
+[connection signal="popup_closed" from="Editor/Color Pickers/ColorPickers/23" to="Editor/Color Pickers/ColorPickers/23" method="_on_popup_closed"]
+[connection signal="pressed" from="Editor/Color Pickers/ColorPickers/23" to="Editor/Color Pickers/ColorPickers/23" method="_on_pressed"]
 [connection signal="color_changed" from="Editor/Color Pickers/ColorPickers/24" to="Editor/Color Pickers/ColorPickers" method="_on__color_changed24"]
+[connection signal="popup_closed" from="Editor/Color Pickers/ColorPickers/24" to="Editor/Color Pickers/ColorPickers/24" method="_on_popup_closed"]
+[connection signal="pressed" from="Editor/Color Pickers/ColorPickers/24" to="Editor/Color Pickers/ColorPickers/24" method="_on_pressed"]
 [connection signal="color_changed" from="Editor/Color Pickers/ColorPickers/25" to="Editor/Color Pickers/ColorPickers" method="_on__color_changed25"]
+[connection signal="popup_closed" from="Editor/Color Pickers/ColorPickers/25" to="Editor/Color Pickers/ColorPickers/25" method="_on_popup_closed"]
+[connection signal="pressed" from="Editor/Color Pickers/ColorPickers/25" to="Editor/Color Pickers/ColorPickers/25" method="_on_pressed"]
 [connection signal="color_changed" from="Editor/Color Pickers/ColorPickers/26" to="Editor/Color Pickers/ColorPickers" method="_on__color_changed26"]
+[connection signal="popup_closed" from="Editor/Color Pickers/ColorPickers/26" to="Editor/Color Pickers/ColorPickers/26" method="_on_popup_closed"]
+[connection signal="pressed" from="Editor/Color Pickers/ColorPickers/26" to="Editor/Color Pickers/ColorPickers/26" method="_on_pressed"]
 [connection signal="color_changed" from="Editor/Color Pickers/ColorPickers/27" to="Editor/Color Pickers/ColorPickers" method="_on__color_changed27"]
+[connection signal="popup_closed" from="Editor/Color Pickers/ColorPickers/27" to="Editor/Color Pickers/ColorPickers/27" method="_on_popup_closed"]
+[connection signal="pressed" from="Editor/Color Pickers/ColorPickers/27" to="Editor/Color Pickers/ColorPickers/27" method="_on_pressed"]
 [connection signal="item_clicked" from="Tester/AnimationList" to="Tester" method="_on_animation_list_item_clicked"]
 [connection signal="pressed" from="Tester/weather toggle" to="Tester" method="_on_weather_toggle_pressed"]
 [connection signal="file_selected" from="Import/ImportDialog" to="Import" method="_on_import_selected"]
+[connection signal="pressed" from="Import/Import" to="Import" method="import_from_paste_tres"]
 [connection signal="pressed" from="Import/Import" to="Import" method="_on_import_pressed"]
 [connection signal="file_selected" from="Export/ExportDialog" to="Export" method="_on_export_path_selected"]
 [connection signal="pressed" from="Export/Export" to="Export" method="_on_export_pressed"]

@@ -33,7 +33,7 @@ func _ready() -> void:
 		var idx := _find_palette_index_by_name(selected_name)
 		if idx != -1:
 			load_index = idx
-		load_color(load_index)
+		load_color(load_index, Vector2.ZERO, 0)
 		first_ready = true
 
 func reset(color_name: String) -> void:
@@ -56,7 +56,7 @@ func _find_palette_index_by_name(name: String) -> int:
 			return i
 	return -1
 
-func load_color(id: int) -> void:
+func load_color(id: int, at_position: Vector2, mouse_button_index: int) -> void:
 	if id < 0 or id >= all_palettes.size(): # CHANGED
 		return
 
