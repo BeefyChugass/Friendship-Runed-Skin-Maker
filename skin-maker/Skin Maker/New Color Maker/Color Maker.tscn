@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://1vvc8b3826qp"]
+[gd_scene load_steps=20 format=3 uid="uid://1vvc8b3826qp"]
 
 [ext_resource type="Script" uid="uid://cyfdeu273g21j" path="res://Skin Maker/New Color Maker/color_maker.gd" id="1_2sfxq"]
 [ext_resource type="Texture2D" uid="uid://bjheq21mv76hp" path="res://Skin Maker/New Color Maker/Background.png" id="1_rvs4m"]
@@ -9,6 +9,10 @@
 [ext_resource type="SpriteFrames" uid="uid://cy7q07xxbjbtx" path="res://Skin Maker/New Color Maker/Liam sprites/new_sprite_frames.tres" id="5_xy500"]
 [ext_resource type="Texture2D" uid="uid://d1n6tsj0isoxi" path="res://Skin Maker/New Color Maker/flachePlatform.png" id="13_ct0eq"]
 [ext_resource type="Texture2D" uid="uid://bvtb7tq4jjq1b" path="res://Skin Maker/New Color Maker/sky day.png" id="13_g1nnr"]
+[ext_resource type="Script" uid="uid://cf0iov5ql4koe" path="res://Skin Maker/New Color Maker/import.gd" id="15_4v2k1"]
+[ext_resource type="Texture2D" uid="uid://diyarcomekkg0" path="res://Skin Maker/Dummy_Idle.png" id="15_wicag"]
+[ext_resource type="Script" uid="uid://d1g4fi12y7ckw" path="res://Skin Maker/New Color Maker/export.gd" id="16_gmrce"]
+[ext_resource type="PackedScene" uid="uid://b3dc60kejlrhe" path="res://Skin Maker/New Color Maker/Skins/New Color ressources/converter.tscn" id="16_y421m"]
 [ext_resource type="Script" uid="uid://d2gdt11bb25s2" path="res://Skin Maker/New Color Maker/builder.gd" id="25_yus0r"]
 [ext_resource type="Script" uid="uid://6fdfnv55bnlr" path="res://Skin Maker/New Color Maker/reader.gd" id="26_fu172"]
 [ext_resource type="Script" uid="uid://dyp283ln0myc4" path="res://Skin Maker/New Color Maker/tester.gd" id="28_4pfyr"]
@@ -84,6 +88,15 @@ offset_bottom = 118.0
 text = "To
 Colors"
 
+[node name="ToColorsButton2" type="Button" parent="Camera2D"]
+visible = false
+offset_left = 240.0
+offset_top = 58.0
+offset_right = 310.0
+offset_bottom = 118.0
+text = "To
+Colors"
+
 [node name="ToTesterButon" type="Button" parent="Camera2D"]
 offset_left = 240.0
 offset_top = 58.0
@@ -91,6 +104,15 @@ offset_right = 300.0
 offset_bottom = 118.0
 text = "Test
 Scene"
+
+[node name="ToExportButon" type="Button" parent="Camera2D"]
+offset_left = -310.0
+offset_top = 58.0
+offset_right = -240.0
+offset_bottom = 118.0
+text = "Import
+Export
+"
 
 [node name="Editor" type="Node" parent="."]
 
@@ -525,9 +547,65 @@ offset_right = 1090.0
 offset_bottom = 351.0
 text = "Weather"
 
+[node name="Import" type="Node" parent="."]
+script = ExtResource("15_4v2k1")
+
+[node name="ImportDialog" type="FileDialog" parent="Import"]
+oversampling_override = 1.0
+title = "Open a File"
+position = Vector2i(-640, 0)
+file_mode = 0
+access = 2
+
+[node name="ExportDialog" type="FileDialog" parent="Import"]
+oversampling_override = 1.0
+position = Vector2i(-640, 0)
+access = 2
+
+[node name="Import" type="Button" parent="Import"]
+offset_left = -430.0
+offset_top = 250.0
+offset_right = -349.0
+offset_bottom = 310.0
+text = "Import
+Skin"
+
+[node name="Status" type="RichTextLabel" parent="Import"]
+offset_left = -629.0
+offset_top = 311.0
+offset_right = -2.0
+offset_bottom = 351.0
+
+[node name="Export" type="Node" parent="."]
+script = ExtResource("16_gmrce")
+
+[node name="ExportDialog" type="FileDialog" parent="Export"]
+oversampling_override = 1.0
+position = Vector2i(-640, 0)
+access = 2
+
+[node name="Export" type="Button" parent="Export"]
+offset_left = -291.0
+offset_top = 250.0
+offset_right = -210.0
+offset_bottom = 310.0
+text = "Export
+Skin"
+
+[node name="DummyIdle" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(465, 274)
+scale = Vector2(2, 2)
+texture = ExtResource("15_wicag")
+
+[node name="Node" parent="." instance=ExtResource("16_y421m")]
+
 [connection signal="pressed" from="Camera2D/ToColorsButton" to="Camera2D" method="_on_to_colors_button_pressed"]
+[connection signal="pressed" from="Camera2D/ToColorsButton2" to="Camera2D" method="_on_to_colors_button_pressed"]
 [connection signal="pressed" from="Camera2D/ToTesterButon" to="Camera2D" method="_on_to_tester_buton_pressed"]
+[connection signal="pressed" from="Camera2D/ToExportButon" to="Camera2D" method="_on_to_export_buton_pressed"]
 [connection signal="item_activated" from="Editor/Reader/Reader/ColorList" to="Editor/Reader/Reader" method="loadColor"]
+[connection signal="item_activated" from="Editor/Reader/Reader/ColorList" to="Editor/Reader/Reader" method="load_color"]
 [connection signal="button_down" from="Editor/Builder/Builder/Button" to="Editor/Builder/Builder" method="createColor"]
 [connection signal="color_changed" from="Editor/Color Pickers/ColorPickers/0" to="Editor/Color Pickers/ColorPickers" method="_on__color_changed0"]
 [connection signal="color_changed" from="Editor/Color Pickers/ColorPickers/1" to="Editor/Color Pickers/ColorPickers" method="_on__color_changed1"]
@@ -559,3 +637,7 @@ text = "Weather"
 [connection signal="color_changed" from="Editor/Color Pickers/ColorPickers/27" to="Editor/Color Pickers/ColorPickers" method="_on__color_changed27"]
 [connection signal="item_clicked" from="Tester/AnimationList" to="Tester" method="_on_animation_list_item_clicked"]
 [connection signal="pressed" from="Tester/weather toggle" to="Tester" method="_on_weather_toggle_pressed"]
+[connection signal="file_selected" from="Import/ImportDialog" to="Import" method="_on_import_selected"]
+[connection signal="pressed" from="Import/Import" to="Import" method="_on_import_pressed"]
+[connection signal="file_selected" from="Export/ExportDialog" to="Export" method="_on_export_path_selected"]
+[connection signal="pressed" from="Export/Export" to="Export" method="_on_export_pressed"]

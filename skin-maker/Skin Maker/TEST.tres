@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="PaletteResource" load_steps=2 format=3 uid="uid://bvkvemym4va0y"]
+
+[ext_resource type="Script" uid="uid://ccpyqvv46y6fs" path="res://Skin Maker/New Color Maker/Skins/New Color ressources/palette_resource.gd" id="1_ed1do"]
+
+[resource]
+script = ExtResource("1_ed1do")
+display_name = "TEST"
+dyes = Array[Color]([Color(0.7050784, 0.18524197, 0.18524197, 1), Color(0.8333333, 0.8333333, 0.8333333, 1), Color(0.80468625, 0.80468625, 0.80468625, 1), Color(1, 1, 1, 1), Color(0.8541667, 0.8541667, 0.8541667, 1), Color(0.59374905, 0.14690706, 0.14690706, 1), Color(0.27450982, 0.14509805, 0.14509805, 1), Color(0.5605451, 0.16027215, 0.16027215, 1), Color(1, 1, 1, 1), Color(0.39583328, 0.39583328, 0.39583328, 1), Color(0.5921569, 0.14509805, 0.14509805, 1), Color(0.61914116, 0.19358118, 0.19358118, 1), Color(0.31445295, 0, 0, 1), Color(0.46093726, 0.012845059, 0.012845059, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(0.44705883, 0, 0.28627452, 1), Color(0.7254902, 0, 0.28627452, 1), Color(0.75, 0.75, 0.75, 1), Color(1, 0.9528039, 0.9528039, 1), Color(0.6015608, 0.15630157, 0.15630157, 1), Color(0, 0, 0, 1), Color(0.1875, 0.1875, 0.1875, 1), Color(0.41666672, 0.21484376, 0.21484376, 1), Color(0.75, 0.43359375, 0.43359375, 1), Color(0.48437646, 0.28525686, 0.28525686, 1), Color(0.27343765, 0.013566157, 0.013566157, 1)])
