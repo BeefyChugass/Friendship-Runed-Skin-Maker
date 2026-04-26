@@ -13,6 +13,8 @@ func _process(delta: float) -> void:
 func createColor():
 	var ColorName = get_child(0).text
 
+	var animation_set = get_node("AnimSet").get_item_text(get_node("AnimSet").selected)
+
 	var dir_path := "user://Skin Maker/New Color Maker/Skins/"
 	DirAccess.make_dir_recursive_absolute(dir_path)
 
@@ -29,9 +31,10 @@ func createColor():
 
 		var res := PaletteResource.new()
 		res.display_name = ColorName
+		res.animation_set = animation_set
 		res.dyes = []
 
-		for i in 28:
+		for i in 24:
 			res.dyes.append(nodepath.get_child(i).color)
 
 		var err := ResourceSaver.save(res, path)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://1vvc8b3826qp"]
+[gd_scene load_steps=21 format=3 uid="uid://1vvc8b3826qp"]
 
 [ext_resource type="Script" uid="uid://cyfdeu273g21j" path="res://Skin Maker/New Color Maker/color_maker.gd" id="1_2sfxq"]
 [ext_resource type="Texture2D" uid="uid://bjheq21mv76hp" path="res://Skin Maker/New Color Maker/Background.png" id="1_rvs4m"]
@@ -11,7 +11,6 @@
 [ext_resource type="Texture2D" uid="uid://d1n6tsj0isoxi" path="res://Skin Maker/New Color Maker/flachePlatform.png" id="13_ct0eq"]
 [ext_resource type="Texture2D" uid="uid://bvtb7tq4jjq1b" path="res://Skin Maker/New Color Maker/sky day.png" id="13_g1nnr"]
 [ext_resource type="Script" uid="uid://cf0iov5ql4koe" path="res://Skin Maker/New Color Maker/import.gd" id="15_4v2k1"]
-[ext_resource type="Texture2D" uid="uid://diyarcomekkg0" path="res://Skin Maker/Dummy_Idle.png" id="15_wicag"]
 [ext_resource type="Script" uid="uid://d1g4fi12y7ckw" path="res://Skin Maker/New Color Maker/export.gd" id="16_gmrce"]
 [ext_resource type="PackedScene" uid="uid://b3dc60kejlrhe" path="res://Skin Maker/New Color Maker/Skins/New Color ressources/converter.tscn" id="16_y421m"]
 [ext_resource type="Texture2D" uid="uid://dm7n3iqkw3l8v" path="res://Skin Maker/File.png" id="19_i8n66"]
@@ -139,7 +138,7 @@ offset_bottom = 133.0
 [node name="Builder" type="Node" parent="Editor/Builder"]
 script = ExtResource("25_yus0r")
 
-[node name="TextEdit" type="TextEdit" parent="Editor/Builder/Builder"]
+[node name="SkinName" type="TextEdit" parent="Editor/Builder/Builder"]
 offset_left = 10.0
 offset_top = 330.0
 offset_right = 260.0
@@ -161,6 +160,28 @@ offset_left = 11.0
 offset_top = 302.0
 offset_right = 638.0
 offset_bottom = 325.0
+
+[node name="AnimSet" type="OptionButton" parent="Editor/Builder/Builder"]
+offset_left = 465.0
+offset_top = 324.0
+offset_right = 640.0
+offset_bottom = 355.0
+selected = 0
+fit_to_longest_item = false
+item_count = 3
+popup/item_0/text = "Default"
+popup/item_0/id = 0
+popup/item_1/text = "Happy"
+popup/item_1/id = 1
+popup/item_2/text = "Serious"
+popup/item_2/id = 2
+
+[node name="AnimSetText" type="Label" parent="Editor/Builder/Builder"]
+offset_left = 339.0
+offset_top = 328.0
+offset_right = 409.0
+offset_bottom = 351.0
+text = "Anim-Set"
 
 [node name="Color Pickers" type="Node2D" parent="Editor"]
 
@@ -254,19 +275,6 @@ offset_bottom = 9.999992
 theme = ExtResource("3_2f6o5")
 script = ExtResource("10_4ppq4")
 
-[node name="8" type="ColorPickerButton" parent="Editor/Color Pickers/ColorPickers"]
-visible = false
-anchors_preset = -1
-anchor_right = 0.0444444
-anchor_bottom = 0.0888889
-offset_left = 80.0
-offset_top = 40.0
-offset_right = 67.11117
-offset_bottom = 19.999992
-theme = ExtResource("3_2f6o5")
-script = ExtResource("10_4ppq4")
-metadata/_edit_use_anchors_ = true
-
 [node name="9" type="ColorPickerButton" parent="Editor/Color Pickers/ColorPickers"]
 anchors_preset = -1
 anchor_right = 0.0444444
@@ -332,19 +340,6 @@ offset_right = 583.11115
 offset_bottom = 83.99999
 theme = ExtResource("3_2f6o5")
 script = ExtResource("10_4ppq4")
-
-[node name="15" type="ColorPickerButton" parent="Editor/Color Pickers/ColorPickers"]
-visible = false
-anchors_preset = -1
-anchor_right = 0.0444444
-anchor_bottom = 0.0888889
-offset_left = 120.0
-offset_top = 80.0
-offset_right = 107.11117
-offset_bottom = 59.999992
-theme = ExtResource("3_2f6o5")
-script = ExtResource("10_4ppq4")
-metadata/_edit_use_anchors_ = true
 
 [node name="16" type="ColorPickerButton" parent="Editor/Color Pickers/ColorPickers"]
 anchors_preset = -1
@@ -453,32 +448,6 @@ offset_right = 67.11114
 offset_bottom = 83.99999
 theme = ExtResource("3_2f6o5")
 script = ExtResource("10_4ppq4")
-
-[node name="26" type="ColorPickerButton" parent="Editor/Color Pickers/ColorPickers"]
-visible = false
-anchors_preset = -1
-anchor_right = 0.0444444
-anchor_bottom = 0.0888889
-offset_left = 120.0
-offset_top = 160.0
-offset_right = 107.11117
-offset_bottom = 140.0
-theme = ExtResource("3_2f6o5")
-script = ExtResource("10_4ppq4")
-metadata/_edit_use_anchors_ = true
-
-[node name="27" type="ColorPickerButton" parent="Editor/Color Pickers/ColorPickers"]
-visible = false
-anchors_preset = -1
-anchor_right = 0.0444444
-anchor_bottom = 0.0888889
-offset_left = 160.0
-offset_top = 160.0
-offset_right = 147.11118
-offset_bottom = 140.0
-theme = ExtResource("3_2f6o5")
-script = ExtResource("10_4ppq4")
-metadata/_edit_use_anchors_ = true
 
 [node name="Label" type="Label" parent="Editor/Color Pickers"]
 offset_left = 80.0
@@ -636,7 +605,6 @@ Skin"
 visible = false
 position = Vector2(465, 274)
 scale = Vector2(2, 2)
-texture = ExtResource("15_wicag")
 
 [node name="Node" parent="." instance=ExtResource("16_y421m")]
 
@@ -650,6 +618,7 @@ texture = ExtResource("19_i8n66")
 [connection signal="pressed" from="Camera2D/ToTesterButon" to="Camera2D" method="_on_to_tester_buton_pressed"]
 [connection signal="pressed" from="Camera2D/ToExportButon" to="Camera2D" method="_on_to_export_buton_pressed"]
 [connection signal="item_activated" from="Editor/Reader/Reader/ColorList" to="Editor/Reader/Reader" method="loadColor"]
+[connection signal="item_activated" from="Editor/Reader/Reader/ColorList" to="Editor/Reader/Reader" method="load_color" binds= [Vector2(0, 0), 0]]
 [connection signal="item_clicked" from="Editor/Reader/Reader/ColorList" to="Editor/Reader/Reader" method="load_color"]
 [connection signal="button_down" from="Editor/Builder/Builder/Button" to="Editor/Builder/Builder" method="createColor"]
 [connection signal="color_changed" from="Editor/Color Pickers/ColorPickers/0" to="Editor/Color Pickers/ColorPickers" method="_on__color_changed0"]
@@ -676,9 +645,6 @@ texture = ExtResource("19_i8n66")
 [connection signal="color_changed" from="Editor/Color Pickers/ColorPickers/7" to="Editor/Color Pickers/ColorPickers" method="_on__color_changed7"]
 [connection signal="popup_closed" from="Editor/Color Pickers/ColorPickers/7" to="Editor/Color Pickers/ColorPickers/7" method="_on_popup_closed"]
 [connection signal="pressed" from="Editor/Color Pickers/ColorPickers/7" to="Editor/Color Pickers/ColorPickers/7" method="_on_pressed"]
-[connection signal="color_changed" from="Editor/Color Pickers/ColorPickers/8" to="Editor/Color Pickers/ColorPickers" method="_on__color_changed8"]
-[connection signal="popup_closed" from="Editor/Color Pickers/ColorPickers/8" to="Editor/Color Pickers/ColorPickers/8" method="_on_popup_closed"]
-[connection signal="pressed" from="Editor/Color Pickers/ColorPickers/8" to="Editor/Color Pickers/ColorPickers/8" method="_on_pressed"]
 [connection signal="color_changed" from="Editor/Color Pickers/ColorPickers/9" to="Editor/Color Pickers/ColorPickers" method="_on__color_changed9"]
 [connection signal="popup_closed" from="Editor/Color Pickers/ColorPickers/9" to="Editor/Color Pickers/ColorPickers/9" method="_on_popup_closed"]
 [connection signal="pressed" from="Editor/Color Pickers/ColorPickers/9" to="Editor/Color Pickers/ColorPickers/9" method="_on_pressed"]
@@ -697,9 +663,6 @@ texture = ExtResource("19_i8n66")
 [connection signal="color_changed" from="Editor/Color Pickers/ColorPickers/14" to="Editor/Color Pickers/ColorPickers" method="_on__color_changed14"]
 [connection signal="popup_closed" from="Editor/Color Pickers/ColorPickers/14" to="Editor/Color Pickers/ColorPickers/14" method="_on_popup_closed"]
 [connection signal="pressed" from="Editor/Color Pickers/ColorPickers/14" to="Editor/Color Pickers/ColorPickers/14" method="_on_pressed"]
-[connection signal="color_changed" from="Editor/Color Pickers/ColorPickers/15" to="Editor/Color Pickers/ColorPickers" method="_on__color_changed15"]
-[connection signal="popup_closed" from="Editor/Color Pickers/ColorPickers/15" to="Editor/Color Pickers/ColorPickers/15" method="_on_popup_closed"]
-[connection signal="pressed" from="Editor/Color Pickers/ColorPickers/15" to="Editor/Color Pickers/ColorPickers/15" method="_on_pressed"]
 [connection signal="color_changed" from="Editor/Color Pickers/ColorPickers/16" to="Editor/Color Pickers/ColorPickers" method="_on__color_changed16"]
 [connection signal="popup_closed" from="Editor/Color Pickers/ColorPickers/16" to="Editor/Color Pickers/ColorPickers/16" method="_on_popup_closed"]
 [connection signal="pressed" from="Editor/Color Pickers/ColorPickers/16" to="Editor/Color Pickers/ColorPickers/16" method="_on_pressed"]
@@ -730,12 +693,6 @@ texture = ExtResource("19_i8n66")
 [connection signal="color_changed" from="Editor/Color Pickers/ColorPickers/25" to="Editor/Color Pickers/ColorPickers" method="_on__color_changed25"]
 [connection signal="popup_closed" from="Editor/Color Pickers/ColorPickers/25" to="Editor/Color Pickers/ColorPickers/25" method="_on_popup_closed"]
 [connection signal="pressed" from="Editor/Color Pickers/ColorPickers/25" to="Editor/Color Pickers/ColorPickers/25" method="_on_pressed"]
-[connection signal="color_changed" from="Editor/Color Pickers/ColorPickers/26" to="Editor/Color Pickers/ColorPickers" method="_on__color_changed26"]
-[connection signal="popup_closed" from="Editor/Color Pickers/ColorPickers/26" to="Editor/Color Pickers/ColorPickers/26" method="_on_popup_closed"]
-[connection signal="pressed" from="Editor/Color Pickers/ColorPickers/26" to="Editor/Color Pickers/ColorPickers/26" method="_on_pressed"]
-[connection signal="color_changed" from="Editor/Color Pickers/ColorPickers/27" to="Editor/Color Pickers/ColorPickers" method="_on__color_changed27"]
-[connection signal="popup_closed" from="Editor/Color Pickers/ColorPickers/27" to="Editor/Color Pickers/ColorPickers/27" method="_on_popup_closed"]
-[connection signal="pressed" from="Editor/Color Pickers/ColorPickers/27" to="Editor/Color Pickers/ColorPickers/27" method="_on_pressed"]
 [connection signal="item_clicked" from="Tester/AnimationList" to="Tester" method="_on_animation_list_item_clicked"]
 [connection signal="pressed" from="Tester/weather toggle" to="Tester" method="_on_weather_toggle_pressed"]
 [connection signal="file_selected" from="Import/ImportDialog" to="Import" method="_on_import_selected"]

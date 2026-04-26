@@ -20,6 +20,8 @@ var first_ready := false
 @onready var color_list: ItemList = $ColorList
 @onready var color_count: RichTextLabel = $ColorCount
 
+@onready var anim_set_button: OptionButton = $"../../Builder/Builder/AnimSet"
+
 func _ready() -> void:
 	_load_user_palettes() # ADDED
 	all_palettes = PALETTES + user_palettes # ADDED
@@ -60,16 +62,32 @@ func load_color(id: int, at_position: Vector2, mouse_button_index: int) -> void:
 	if id < 0 or id >= all_palettes.size(): # CHANGED
 		return
 
+	if mouse_button_index >= 4: #filters out scrolling
+		return
+
 	var palette := all_palettes[id] # CHANGED
 	if palette == null:
 		return
 
 	var pickers := get_parent().get_parent().get_node("Color Pickers/ColorPickers")
 
-	for i in range(28):
-		if i >= palette.dyes.size():
-			break
-		pickers.get_child(i).color = palette.dyes[i]
+	if palette.dyes.size() == 28: #LegacyColor still loadable, will outoconvert to new system of exportet again
+		for i in range(24):
+			var x = i
+			if x > 7:
+				x += 1
+			if x > 14:
+				x += 1
+			if i >= palette.dyes.size():
+				break
+			pickers.get_child(i).color = palette.dyes[x]
+			pass
+		pass
+	else: #New 24 Color system
+		for i in range(24):
+			if i >= palette.dyes.size():
+				break
+			pickers.get_child(i).color = palette.dyes[i]
 
 	pickers.updateall()
 	get_parent().get_parent().get_parent().get_node("Export").current_palette = palette
@@ -80,6 +98,14 @@ func load_color(id: int, at_position: Vector2, mouse_button_index: int) -> void:
 
 	var shown_name := color_list.get_item_text(id)
 	status.add_text("%s Loaded" % shown_name)
+	
+	if !palette.animation_set:
+		anim_set_button.select(0)
+	else:
+		for i in anim_set_button.item_count:
+			if anim_set_button.get_item_text(i) == palette.animation_set:
+				anim_set_button.select(i)
+				break
 
 func _load_user_palettes() -> void: # ADDED
 	user_palettes.clear()

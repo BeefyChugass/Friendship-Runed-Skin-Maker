@@ -80,34 +80,34 @@ void fragment() {
 
 	if (tex.a > 0.0) {
 		// Unrolled palette swap (mobile-safe)
-		if      (same255(tex255, Base1))  out_col = vec4(Dye1.rgb * INV_255, tex.a);
-		else if (same255(tex255, Base2))  out_col = vec4(Dye2.rgb * INV_255, tex.a);
-		else if (same255(tex255, Base3))  out_col = vec4(Dye3.rgb * INV_255, tex.a);
-		else if (same255(tex255, Base4))  out_col = vec4(Dye4.rgb * INV_255, tex.a);
-		else if (same255(tex255, Base5))  out_col = vec4(Dye5.rgb * INV_255, tex.a);
-		else if (same255(tex255, Base6))  out_col = vec4(Dye6.rgb * INV_255, tex.a);
-		else if (same255(tex255, Base7))  out_col = vec4(Dye7.rgb * INV_255, tex.a);
-		else if (same255(tex255, Base8))  out_col = vec4(Dye8.rgb * INV_255, tex.a);
-		else if (same255(tex255, Base9))  out_col = vec4(Dye9.rgb * INV_255, tex.a);
-		else if (same255(tex255, Base10)) out_col = vec4(Dye10.rgb * INV_255, tex.a);
-		else if (same255(tex255, Base11)) out_col = vec4(Dye11.rgb * INV_255, tex.a);
-		else if (same255(tex255, Base12)) out_col = vec4(Dye12.rgb * INV_255, tex.a);
-		else if (same255(tex255, Base13)) out_col = vec4(Dye13.rgb * INV_255, tex.a);
-		else if (same255(tex255, Base14)) out_col = vec4(Dye14.rgb * INV_255, tex.a);
-		else if (same255(tex255, Base15)) out_col = vec4(Dye15.rgb * INV_255, tex.a);
-		else if (same255(tex255, Base16)) out_col = vec4(Dye16.rgb * INV_255, tex.a);
-		else if (same255(tex255, Base17)) out_col = vec4(Dye17.rgb * INV_255, tex.a);
-		else if (same255(tex255, Base18)) out_col = vec4(Dye18.rgb * INV_255, tex.a);
-		else if (same255(tex255, Base19)) out_col = vec4(Dye19.rgb * INV_255, tex.a);
-		else if (same255(tex255, Base20)) out_col = vec4(Dye20.rgb * INV_255, tex.a);
-		else if (same255(tex255, Base21)) out_col = vec4(Dye21.rgb * INV_255, tex.a);
-		else if (same255(tex255, Base22)) out_col = vec4(Dye22.rgb * INV_255, tex.a);
-		else if (same255(tex255, Base23)) out_col = vec4(Dye23.rgb * INV_255, tex.a);
-		else if (same255(tex255, Base24)) out_col = vec4(Dye24.rgb * INV_255, tex.a);
-		else if (same255(tex255, Base25)) out_col = vec4(Dye25.rgb * INV_255, tex.a);
-		else if (same255(tex255, Base26)) out_col = vec4(Dye26.rgb * INV_255, tex.a);
-		else if (same255(tex255, Base27)) out_col = vec4(Dye27.rgb * INV_255, tex.a);
-		else if (same255(tex255, Base28)) out_col = vec4(Dye28.rgb * INV_255, tex.a);
+		if      (same255(tex255, Base1))  out_col = vec4(Dye1.rgb, tex.a);
+		else if (same255(tex255, Base2))  out_col = vec4(Dye2.rgb, tex.a);
+		else if (same255(tex255, Base3))  out_col = vec4(Dye3.rgb, tex.a);
+		else if (same255(tex255, Base4))  out_col = vec4(Dye4.rgb, tex.a);
+		else if (same255(tex255, Base5))  out_col = vec4(Dye5.rgb, tex.a);
+		else if (same255(tex255, Base6))  out_col = vec4(Dye6.rgb, tex.a);
+		else if (same255(tex255, Base7))  out_col = vec4(Dye7.rgb, tex.a);
+		else if (same255(tex255, Base8))  out_col = vec4(Dye8.rgb, tex.a);
+		else if (same255(tex255, Base9))  out_col = vec4(Dye9.rgb, tex.a);
+		else if (same255(tex255, Base10)) out_col = vec4(Dye10.rgb, tex.a);
+		else if (same255(tex255, Base11)) out_col = vec4(Dye11.rgb, tex.a);
+		else if (same255(tex255, Base12)) out_col = vec4(Dye12.rgb, tex.a);
+		else if (same255(tex255, Base13)) out_col = vec4(Dye13.rgb, tex.a);
+		else if (same255(tex255, Base14)) out_col = vec4(Dye14.rgb, tex.a);
+		else if (same255(tex255, Base15)) out_col = vec4(Dye15.rgb, tex.a);
+		else if (same255(tex255, Base16)) out_col = vec4(Dye16.rgb, tex.a);
+		else if (same255(tex255, Base17)) out_col = vec4(Dye17.rgb, tex.a);
+		else if (same255(tex255, Base18)) out_col = vec4(Dye18.rgb, tex.a);
+		else if (same255(tex255, Base19)) out_col = vec4(Dye19.rgb, tex.a);
+		else if (same255(tex255, Base20)) out_col = vec4(Dye20.rgb, tex.a);
+		else if (same255(tex255, Base21)) out_col = vec4(Dye21.rgb, tex.a);
+		else if (same255(tex255, Base22)) out_col = vec4(Dye22.rgb, tex.a);
+		else if (same255(tex255, Base23)) out_col = vec4(Dye23.rgb, tex.a);
+		else if (same255(tex255, Base24)) out_col = vec4(Dye24.rgb, tex.a);
+		else if (same255(tex255, Base25)) out_col = vec4(Dye25.rgb, tex.a);
+		else if (same255(tex255, Base26)) out_col = vec4(Dye26.rgb, tex.a);
+		else if (same255(tex255, Base27)) out_col = vec4(Dye27.rgb, tex.a);
+		else if (same255(tex255, Base28)) out_col = vec4(Dye28.rgb, tex.a);
 	}
 
 	// Outline (keep constant bounds for WebGL1 safety)

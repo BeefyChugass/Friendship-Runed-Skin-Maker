@@ -13,7 +13,7 @@ func _process(delta: float) -> void:
 
 func updatecolorhelper(DyeName,PickerList):
 	var ShaderMat = get_parent().get_parent().get_parent().get_node("Camera2D/Liam/Animation").material
-	ShaderMat.set_shader_parameter(DyeName,get_node(PickerList).color * 255)
+	ShaderMat.set_shader_parameter(DyeName,get_node(PickerList).color)
 
 func updateall():
 	updatecolorhelper("Dye1","0")
@@ -24,14 +24,14 @@ func updateall():
 	updatecolorhelper("Dye6","5")
 	updatecolorhelper("Dye7","6")
 	updatecolorhelper("Dye8","7")
-	updatecolorhelper("Dye9","8")
+	#updatecolorhelper("Dye9","8")
 	updatecolorhelper("Dye10","9")
 	updatecolorhelper("Dye11","10")
 	updatecolorhelper("Dye12","11")
 	updatecolorhelper("Dye13","12")
 	updatecolorhelper("Dye14","13")
 	updatecolorhelper("Dye15","14")
-	updatecolorhelper("Dye16","15")
+	#updatecolorhelper("Dye16","15")
 	updatecolorhelper("Dye17","16")
 	updatecolorhelper("Dye18","17")
 	updatecolorhelper("Dye19","18")
@@ -42,8 +42,8 @@ func updateall():
 	updatecolorhelper("Dye24","23")
 	updatecolorhelper("Dye25","24")
 	updatecolorhelper("Dye26","25")
-	updatecolorhelper("Dye27","26")
-	updatecolorhelper("Dye28","27")
+	#updatecolorhelper("Dye27","26")
+	#updatecolorhelper("Dye28","27")
 	
 
 func _on__color_changed0(color: Color) -> void:
